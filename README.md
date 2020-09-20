@@ -31,4 +31,4 @@ O Agendabot é um bot de Whatsapp que sincroniza com a agenda de Pequenos Presta
 ## 📕 Licença
 
 Todos os arquivos incluídos aqui, incluindo este _Readme_, estão sob [Licença MIT](./LICENSE).<br>
-Criado com ❤ por [Adriana Lima](https://github.com/dxwebster)
+Criado com ❤ por Time 10 - Hackaton Zenvia New Horizon
