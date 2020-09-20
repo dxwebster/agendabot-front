@@ -1,7 +1,7 @@
 <p align=center>
 
 <h5 align=center>
-<img src="readme/capa-1.png"><br>
+<img src="readme/capa.png"><br>
 
 </h5>
 
