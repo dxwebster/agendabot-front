@@ -2,11 +2,7 @@ import styled from 'styled-components';
 
 const size = {
   desktop: '700px',
-}
-
-const device = {
-  desktop: `(min-width: ${size.desktop})`
-}
+};
 
 interface Props {
   isTeacherList?: boolean;
@@ -37,8 +33,10 @@ export const InputBlock = styled.div<Props>`
   /* todos os inputs que vem depois do primeiro vai aplicar esse margin-top */
 
   > label {
-    color: ${(props) => props.isTeacherList
-      ? 'var(--color-text-in-primary)' : 'var(--color-text-complement)'};
+    color: ${(props) =>
+      props.isTeacherList
+        ? 'var(--color-text-in-primary)'
+        : 'var(--color-text-complement)'};
     font-size: 18px;
   }
 
@@ -53,4 +51,4 @@ export const InputBlock = styled.div<Props>`
     padding: 0 1.6rem;
     font: 16px Archivo;
   }
-`as React.FC<Props>;
+` as React.FC<Props>;

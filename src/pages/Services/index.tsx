@@ -1,7 +1,13 @@
-import React, { ChangeEvent, FormEvent, useCallback, useRef, useState } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useCallback,
+  useRef,
+  useState,
+} from 'react';
 import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -10,7 +16,14 @@ import Header from '../../components/Header';
 import InputServices from '../../components/InputSevices';
 import Select from '../../components/Select';
 
-import { Container, Content, Main, Fieldset, ScheduleItem, ResetScheduleButton } from './styles';
+import {
+  Container,
+  Content,
+  Main,
+  Fieldset,
+  ScheduleItem,
+  ResetScheduleButton,
+} from './styles';
 import { useAuth } from '../../hooks/AuthContext';
 import { useToast } from '../../hooks/ToastContext';
 
@@ -33,9 +46,9 @@ export default function Services() {
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
 
-    console.log(name, value)
+    console.log(name, value);
 
-    setData({ ...data, [name]: value })
+    setData({ ...data, [name]: value });
   }
 
   const formRef = useRef<FormHandles>(null);
@@ -85,13 +98,14 @@ export default function Services() {
   ]);
 
   function handleAddNewScheduleItem() {
-    setScheduleItems([
-      ...scheduleItems,
-      { week_day: 0, from: '', to: '' }
-    ])
+    setScheduleItems([...scheduleItems, { week_day: 0, from: '', to: '' }]);
   }
 
-  function setScheduleItemValue(position: number, field: string, value: string) {
+  function setScheduleItemValue(
+    position: number,
+    field: string,
+    value: string
+  ) {
     const updatedScheduleItems = scheduleItems.map((scheduleItem, index) => {
       if (index === position) {
         return { ...scheduleItem, [field]: value };
@@ -106,9 +120,7 @@ export default function Services() {
   function handleResetSchedule(event: FormEvent) {
     event.preventDefault();
 
-    setScheduleItems([
-      { week_day: 0, from: '', to: '' }
-    ])
+    setScheduleItems([{ week_day: 0, from: '', to: '' }]);
   }
 
   return (
@@ -119,57 +131,56 @@ export default function Services() {
         <h1>Novo Prestador de Serviço</h1>
 
         <Main>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          {/*O fieldset vai ser cada bloco dos inputs*/}
-          <Fieldset>
-            <legend>Dados Pessoais</legend>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            {/*O fieldset vai ser cada bloco dos inputs*/}
+            <Fieldset>
+              <legend>Dados Pessoais</legend>
 
-            <InputServices
-              name="name"
-              label="Nome"
-              onChange={(e) => handleInputChange(e)}
-            />
+              <InputServices
+                name="name"
+                label="Nome"
+                onChange={(e) => handleInputChange(e)}
+              />
 
-            <InputServices
-              name="email"
-              label="Email"
-              onChange={(e) => handleInputChange(e)}
-            />
+              <InputServices
+                name="email"
+                label="Email"
+                onChange={(e) => handleInputChange(e)}
+              />
 
-            <InputServices
-              name="whatsapp"
-              label="Whatsapp"
-              onChange={(e) => handleInputChange(e)}
-            />
+              <InputServices
+                name="whatsapp"
+                label="Whatsapp"
+                onChange={(e) => handleInputChange(e)}
+              />
+            </Fieldset>
 
-          </Fieldset>
+            <Fieldset>
+              <legend>Sobre a aulas</legend>
 
-          <Fieldset>
-            <legend>Sobre a aulas</legend>
+              <Select
+                name="subject"
+                label="Matéria"
+                options={[
+                  { value: 'medico', label: 'Médico' },
+                  { value: 'advogado', label: 'Advogado' },
+                ]}
+              />
 
-            <Select
-              name="subject"
-              label="Matéria"
-              options={[
-                { value: 'medico', label: 'Médico' },
-                { value: 'advogado', label: 'Advogado' },
-              ]}
-            />
+              <InputServices
+                name="cost"
+                label="Custo da sua hora"
+                onChange={(e) => handleInputChange(e)}
+              />
+            </Fieldset>
 
-            <InputServices
-              name="cost"
-              label="Custo da sua hora"
-              onChange={(e) => handleInputChange(e)}
-            />
-          </Fieldset>
-
-          <Fieldset>
-            <legend>
-              Horários disponíveis
-              <button type="button" onClick={handleAddNewScheduleItem}>
-                + Novo horário
-              </button>
-            </legend>
+            <Fieldset>
+              <legend>
+                Horários disponíveis
+                <button type="button" onClick={handleAddNewScheduleItem}>
+                  + Novo horário
+                </button>
+              </legend>
 
               {scheduleItems.map((scheduleItem, index) => {
                 return (
@@ -179,8 +190,8 @@ export default function Services() {
                       label="Dia da semana"
                       value={scheduleItem.week_day}
                       onChange={(e) =>
-                        setScheduleItemValue(index, 'week_day', e.target.value
-                      )}
+                        setScheduleItemValue(index, 'week_day', e.target.value)
+                      }
                       options={[
                         { value: '0', label: 'Domingo' },
                         { value: '1', label: 'Segunda-feira' },
@@ -188,7 +199,7 @@ export default function Services() {
                         { value: '3', label: 'Quarta-feira' },
                         { value: '4', label: 'Quinta-feira' },
                         { value: '5', label: 'Sexta-feira' },
-                        { value: '6', label: 'Sábado' }
+                        { value: '6', label: 'Sábado' },
                       ]}
                     />
 
@@ -197,8 +208,9 @@ export default function Services() {
                       label="Das"
                       type="time"
                       value={scheduleItem.from}
-                      onChange={(e) => setScheduleItemValue(index, 'from', e.target.value
-                      )}
+                      onChange={(e) =>
+                        setScheduleItemValue(index, 'from', e.target.value)
+                      }
                     />
 
                     <InputServices
@@ -206,28 +218,23 @@ export default function Services() {
                       label="Até"
                       type="time"
                       value={scheduleItem.to}
-                      onChange={(e) => setScheduleItemValue(index, 'to', e.target.value
-                      )}
+                      onChange={(e) =>
+                        setScheduleItemValue(index, 'to', e.target.value)
+                      }
                     />
-
                   </ScheduleItem>
                 );
               })}
 
               <ResetScheduleButton>
-                <button onClick={handleResetSchedule}>
-                  Resetar horários
-                </button>
+                <button onClick={handleResetSchedule}>Resetar horários</button>
               </ResetScheduleButton>
 
-            <button type="submit">
-              Salvar cadastro
-            </button>
-          </Fieldset>
+              <button type="submit">Salvar cadastro</button>
+            </Fieldset>
           </Form>
         </Main>
       </Content>
-
     </Container>
   );
 }

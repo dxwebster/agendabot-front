@@ -1,11 +1,10 @@
 import React, { useCallback, useRef } from 'react';
-import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
 
-import heartIcon from '../../assets/icons/heart.svg';
 import google from '../../assets/icons/google.png';
 
 import { useAuth } from '../../hooks/AuthContext';
@@ -25,7 +24,6 @@ import {
   GroupCheckerBox,
   GroupText,
   Footer,
-  WrapperText,
   WrapperLink,
   Background,
 } from './styles';
