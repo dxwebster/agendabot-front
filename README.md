@@ -13,6 +13,10 @@
 
 O Agendabot é um bot de Whatsapp que sincroniza com a agenda de Pequenos Prestadores de Serviços para simplificar o agendamento de sessões com os seus clientes.
 
+## 💻 Preview do Login
+
+<img src="readme/screen.gif" width=600>
+
 ## Equipe
 
 - 🎨 UX: [Adriana Lima](https://www.linkedin.com/in/adrianalimashika/)
